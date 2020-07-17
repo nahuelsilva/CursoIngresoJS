@@ -35,11 +35,11 @@ function Circulo ()
     radio = txtIdRadio.value;
     radio = parseInt(radio);
 
-    circunferencia = (2 * radio) * 3,1415;
+    circunferencia = (2 * Math.PI) * radio;
 
     alambre = circunferencia * 3; 
 
-    alert("La cantidad de alambre para el circulo es: " + alambre + " metros");
+    alert("La cantidad de alambre para el circulo es: " + alambre.toFixed(3) + " metros");
 
 }
 function Materiales () 

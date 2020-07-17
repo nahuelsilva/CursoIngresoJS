@@ -69,8 +69,8 @@ function PrecioFinal ()
     suma = precioUno + precioDos + precioTres;
     suma = parseInt(suma);
 
-    //iva = suma * 0,21; ---- preguntar xq no multiplica el 0,21 
-    iva = (suma * 21) / 100;
+    iva = suma * 0.21; //---- preguntar xq no multiplica el 0,21 -- no toma la coma sino puntos ej 0,21 NO -- 0.21 SI
+    //iva = (suma * 21) / 100;
 
     PrecioFinal = suma + iva;
     alert("El precio final es: " + PrecioFinal);
