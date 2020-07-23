@@ -14,10 +14,15 @@ function CalcularPrecio ()
     var precioSindescuento;
     var marca;
     var lamparasMayoresSeis;
-    var descuentolamparaArgentinaLuz;
+    var lamparaArgentinaLuz;
+    var felipeLamparas;
+    var otras;
     var descuento;
+    var precioConDescuento;
+    var aumentoIva;
+    var importeConIva;
     
-
+    // agrege una ultima variable para poder sacar el importe final si es mayor a 120 -- var preciocondescuento
 
     cantidadLamparas = txtIdCantidad.value;
     cantidadLamparas = parseInt(cantidadLamparas);
@@ -29,18 +34,138 @@ function CalcularPrecio ()
 
     if(cantidadLamparas > 5 )
     {
-        lamparasMayoresSeis = precioSindescuento / 2;
-        alert("El descuento es: " + lamparasMayoresSeis);
+        precioConDescuento = precioSindescuento / 2;
+        lamparasMayoresSeis = precioConDescuento
+        // -- esto es para tirar un mensaje por ALERT --- alert("El descuento es: " + lamparasMayoresSeis);
+        txtIdprecioDescuento.value = lamparasMayoresSeis;
     }
     else{
             if(cantidadLamparas == 5 && marca == "ArgentinaLuz")
             {
-                descuentolamparaArgentinaLuz = (precioSindescuento * 40) / 100;
-                lamparaArgentinaLuz = precioSindescuento - descuentolamparaArgentinaLuz;
+                descuento = (precioSindescuento * 40) / 100;
+                precioConDescuento = precioSindescuento - descuento;
+                lamparaArgentinaLuz = precioConDescuento;
 
-                alert("lampara argentina luz 40 %: " + lamparaArgentinaLuz);
+                //alert("lampara argentina luz 40 %: " + lamparaArgentinaLuz);
+                txtIdprecioDescuento.value = lamparaArgentinaLuz;
+            }
+            else
+            {
+                if(cantidadLamparas == 5)
+                {
+                    descuento = (precioSindescuento * 30) / 100;
+                    precioConDescuento = precioSindescuento - descuento;
+                    otras = precioConDescuento;
+
+                    //alert("comprando 5 cualquier marca 30 % desc:" + otras);
+                    txtIdprecioDescuento.value = otras;
+                }
+                else
+                {
+                    if(cantidadLamparas == 4 && (marca == "ArgentinaLuz" || marca == "FelipeLamparas"))
+                    {
+                        descuento = (precioSindescuento * 25) / 100;
+                        precioConDescuento = precioSindescuento - descuento;
+
+                        //alert("4 lamparas argentinaluz 25 % desc: " + lamparaArgentinaLuz);
+                        txtIdprecioDescuento.value = precioConDescuento;
+                    }
+                    else
+                    {
+                        if(cantidadLamparas == 4 )
+                        {
+                            descuento = (precioSindescuento * 20) / 100;
+                            precioConDescuento = precioSindescuento - descuento;
+                            otras = precioConDescuento;
+
+                            // alert(" 4 lamparas otra marca 20 % desc : " + felipeLamparas);
+                            txtIdprecioDescuento.value = otras;
+                        }
+                        else
+                        {
+                            if(cantidadLamparas == 3 && marca == "ArgentinaLuz")
+                            {
+                                descuento = (precioSindescuento * 15) / 100;
+                                precioConDescuento = precioSindescuento - descuento;
+                                lamparaArgentinaLuz = precioConDescuento;
+
+                                //alert(" 3 lampas argentinaluz 15 % desc: " + lamparaArgentinaLuz);
+                                txtIdprecioDescuento.value = lamparaArgentinaLuz;
+                            }
+                            else
+                            {
+                                if(cantidadLamparas == 3 && marca == "FelipeLamparas")
+                                {
+                                    descuento = (precioSindescuento * 10) / 100;
+                                    precioConDescuento = precioSindescuento - descuento;
+                                    felipeLamparas = precioConDescuento;
+
+                                    //alert("3 felipe lampara 10 % desc: " + felipeLamparas);
+                                    txtIdprecioDescuento.value = felipeLamparas;
+                                }
+                                else
+                                {
+                                    if(cantidadLamparas == 3)
+                                    {
+                                        descuento = (precioSindescuento * 5) / 100;
+                                        precioConDescuento = precioSindescuento - descuento;
+                                        otras = precioConDescuento;
+                                        // alert (" 3 lamparas cualquiera un 5 % desc: " + otras);
+                                        txtIdprecioDescuento.value = otras;
+                                    }
+                                    else
+                                    {
+                                        otras = precioSindescuento;
+                                        txtIdprecioDescuento.value = otras;
+                                    }
+                                }
+                            }
+                        }
+                     
+                    }
+                }
             }
         }
-
+        if(precioConDescuento > 120)
+        {
+            aumentoIva = (precioConDescuento * 10) / 100;
+            importeConIva = precioConDescuento + aumentoIva;
+            alert("El precio supero los 120 se agrega un iva del 10%: " + importeConIva);
+        }
 
 }
+
+ /*
+                    else
+                    {
+                        if(cantidadLamparas == 3 && (marca == "ArgentinaLuz" || marca == "FelipeLamparas"))
+                        {
+                            descuento = (marca == "ArgentinaLuz") = (precioSindescuento * 15) / 100;
+                            lamparaArgentinaLuz = precioSindescuento - descuento;
+
+                            alert(" 3 argentina luz 15 % desc: " + lamparaArgentinaLuz);
+
+                            descuento = (marca == "FelipeLamparas") = (precioSindescuento * 10) / 100;
+                            felipeLamparas = precioSindescuento - descuento;
+
+                            alert("3 felipe lamparas 10% desc:" + felipeLamparas);
+                        }
+                    }
+                        
+     // --- De esta forma rompe el programa --- if(cantidadLamparas == 3 && (marca == "ArgentinaLuz" || marca == "FelipeLamparas"))
+
+    ---  Para reducir variables se puede reemplazar estas variables:
+
+     var lamparasMayoresSeis;
+     var lamparaArgentinaLuz;
+     var felipeLamparas;
+     var otras;
+
+     y cambiarlas por solamente : var precioSindescuento;
+                                  var descuento;
+                                  var precioConDescuento;
+
+                esto toma cada resultado y lo va chequeando if por if, en donde entro (algun if) toma el valor y luego salta
+                porque el valor ya esta usando esa variable.  
+
+*/
