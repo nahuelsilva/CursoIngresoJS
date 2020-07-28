@@ -10,19 +10,17 @@ en Verano: bariloche tiene un descuento del 20% cataratas y Cordoba tiene un aum
 
 en Otoño y Primavera: bariloche tiene un aumento del 10% cataratas tiene un aumento del 10% Mar del plata tiene un aumento del 10% y Cordoba tiene el precio sin descuento
 */
+
+
+
 {
+		
 	var estacionDelAño;
 	var destino;
-	var precioInvierno;
-	var precioVerano;
-	var precioOtraEstacion;
 	var precioFinal;
 	var tarifa = 15000;
 	var porcentaje;
-	var aumento;
 	var descuento;
-	var precioDescuento;
-	var precioAumento;
 
 	estacionDelAño = txtIdEstacion.value;
 	destino = txtIdDestino.value;
@@ -32,7 +30,7 @@ en Otoño y Primavera: bariloche tiene un aumento del 10% cataratas tiene un aum
 		case "Invierno" : 
 			if(destino == "Bariloche")
 			{
-				aumento = 20;
+				porcentaje = 20;
 				/*
 				precioInvierno = tarifa * porcentaje / 100;
 				precioFinal = tarifa + precioInvierno;
@@ -45,11 +43,11 @@ en Otoño y Primavera: bariloche tiene un aumento del 10% cataratas tiene un aum
 			{
 				if(estacionDelAño == "Mar del plata")
 				{
-					descuento = 20;
+					porcentaje = -20;
 				}
 				else 
 				{
-					descuento = 10;
+					porcentaje = -10;
 				}
 				/*
 				precioInvierno = tarifa * porcentaje / 100;
@@ -57,23 +55,25 @@ en Otoño y Primavera: bariloche tiene un aumento del 10% cataratas tiene un aum
 				alert("Epocas de invierno " + precioFinal);
 				*/
 			}
+			break;
 
 		case "Verano" :
 			switch (destino)
 			{
 				case "Cataratas" :
 				case "Cordoba"	:
-					aumento = 10;
+					porcentaje = 10;
 					break;
 				
 				case "Mar del plata" :
-					aumento = 20;
+					porcentaje = 20;
 					break;
 					
 				case "Bariloche" :
-					descuento = 20;
-					break;	
+					porcentaje = -20;
+					break;		
 			}
+			break;
 
 		case "Otoño" :
 		case "Primavera" :
@@ -82,24 +82,27 @@ en Otoño y Primavera: bariloche tiene un aumento del 10% cataratas tiene un aum
 				case "Bariloche" :
 				case "Cataratas" :
 				case "Mar del plata" :
-					aumento = 10;
+					porcentaje = 10;
 					break
 					
 				default :
-					aumento = 0;
+					porcentaje = 0;
 					break;	
+
 			}	
+			break;	
 	}
 
 	// ver como hacer para resolver el tema de los precios 
 
-	precioAumento = tarifa * aumento / 100;
-	precioDescuento = tarifa * descuento / 100;
+	descuento = tarifa * porcentaje / 100;
+	alert(descuento);
 
-	precioFinal = tarifa - precioDescuento;
-	precioFinal = tarifa + precioAumento;
+	precioFinal = tarifa + descuento;
+
+	// en cada porcentaje tengo q poner signos si es descuento (-) o aumento (+) para cuando haga una sola cuenta
 
 	alert("el precio : " + precioFinal );
 
 
-}//FIN DE LA FUNCIÓN
+}//FIN DE LA FUNCIÓN   
