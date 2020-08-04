@@ -96,13 +96,13 @@ en Otoño y Primavera: bariloche tiene un aumento del 10% cataratas tiene un aum
 	// ver como hacer para resolver el tema de los precios 
 
 	descuento = tarifa * porcentaje / 100;
-	alert(descuento);
+	alert("El precio de aumento o descuento es : " + descuento);
 
 	precioFinal = tarifa + descuento;
 
 	// en cada porcentaje tengo q poner signos si es descuento (-) o aumento (+) para cuando haga una sola cuenta
 
-	alert("el precio : " + precioFinal );
+	alert("El precio final es : " + precioFinal );
 
 
 }//FIN DE LA FUNCIÓN   

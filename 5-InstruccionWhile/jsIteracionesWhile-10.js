@@ -1,4 +1,7 @@
 /*
+
+NAHUEL SILVA
+
 Al presionar el botón pedir  números  
 hasta que el usuario quiera, mostrar:
 1-Suma de los negativos.
@@ -15,15 +18,75 @@ function mostrar()
 	//declarar contadores y variables 
 	var respuesta;
 	var numeroIngresado;
-	var sumaNegativos=0;
+	var contadorNegativos;
+	var acumuladorNegativos;
+	var contadorPositivos;
+	var acumuladorPositivos;
+	var contadorCeros;
+	var contadorNumerosPares;
+	var promedioPositivos;
+	var promedioNegativos;
+	var diferencia;
+
+	contadorNegativos = 0;
+	acumuladorNegativos = 0;
+
+	contadorPositivos = 0;
+	acumuladorPositivos = 0;
+
+	contadorCeros = 0;
+
+	contadorNumerosPares = 0;
 
 	respuesta="si";
 
 	while(respuesta=="si")
 	{
+
+		numeroIngresado = prompt("Ingrese sus numeros: ");
+		numeroIngresado = parseInt(numeroIngresado);
+
+
+		if(numeroIngresado < 0)
+		{
+			acumuladorNegativos = acumuladorNegativos + numeroIngresado;
+			contadorNegativos++;
+		}
+		else
+		{
+			if(numeroIngresado > 0)
+			{
+				acumuladorPositivos = acumuladorPositivos + numeroIngresado;
+				contadorPositivos++;
+			}
+			else
+			{
+				contadorCeros++;
+			}
+		}
+
+		if(numeroIngresado % 2 == 0 && numeroIngresado != 0)
+		{
+			contadorNumerosPares++;
+		}
 		
 		respuesta=prompt("desea continuar?");
 	}//fin del while
 
-	document.write("la suma de negativos es :"+sumaNegativos);
+	promedioPositivos = acumuladorPositivos / contadorPositivos;
+
+	promedioNegativos = acumuladorNegativos / contadorNegativos;
+
+	diferencia = acumuladorPositivos - acumuladorNegativos;
+
+
+	document.write("La suma de negativos es : " + acumuladorNegativos + "<br>");
+	document.write("La suma de positivos es : " + acumuladorPositivos + "<br>");
+	document.write("La cantidad de negativos es : " + contadorNegativos + "<br>");
+	document.write("La cantidad de positivos es : " + contadorPositivos + "<br>");
+	document.write("La cantidad de ceros es : " + contadorCeros + "<br>");
+	document.write("La cantidad de numeros pares es : " + contadorNumerosPares + "<br>");
+	document.write("El promedio de los positivos es : " + promedioPositivos + "<br>");
+	document.write("El promedio de los negativos es : " + promedioNegativos + "<br>");
+	document.write("La diferencia entre positivos y negativos es : " + diferencia + "<br>");
 }//FIN DE LA FUNCIÓN

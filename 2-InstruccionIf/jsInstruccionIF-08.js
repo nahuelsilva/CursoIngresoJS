@@ -21,8 +21,6 @@ Se pide ingresar una edad y un estado cicvil
 
 	var edad;
 	var estadocivilingresado;
-	var menoresDeEdad;
-	var adolescentesCasados;
 	var mensaje;
 	var mensajeConcatenado;
 
@@ -30,8 +28,6 @@ Se pide ingresar una edad y un estado cicvil
 	edad = parseInt(edad);
 
 	estadocivilingresado = estadoCivil.value;
-
-
 
 	if(edad > 5 && edad < 18)
 	{
@@ -55,10 +51,10 @@ Se pide ingresar una edad y un estado cicvil
 					mensaje = alert("haga la tarea");
 					*/
 					mensaje = "Haga la tarea."				
-				break
+				break;
 
-			mensajeConcatenado = "Respeta tus mayores.";	
 		}
+		mensajeConcatenado = "Respete sus mayores";	
 	}
 	else
 	{
@@ -67,26 +63,29 @@ Se pide ingresar una edad y un estado cicvil
 			switch(estadocivilingresado)
 			{
 				case "Soltero":
-					mensaje = alert("vive la vida");
+					mensaje = "Vive la vida";
 					break;
 
 				case "Casado":
-					mensaje = alert("Disfruta tu pareja");
+					mensaje = "Disfruta tu pareja";
 					break;
 
 				case "Divorciado":		
-					mensaje = alert("intentalo nuevamente");
+					mensaje = "Intentalo nuevamente";
 					break;
 					
 			}
 		}
-		else
-		{
-			if()
-		}
+		
+			if(edad > 60)
+			{
+				mensajeConcatenado = "Sos persona de riesgo.";
+			}
+		
 	}
 
-	alert( mensaje);
+	alert( mensaje +  "\n" + mensajeConcatenado );
+	//alert(mensajeConcatenado);
 ///// debo poner una variable mensaje
 	
 

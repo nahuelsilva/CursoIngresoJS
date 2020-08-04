@@ -10,6 +10,107 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
  */
 function CalcularPrecio () 
 {
+
+	var cantidadLamparas;
+	var marca;
+	var descuento;
+	var precioSindescuento;
+	var precioFinal;
+	var precioBruto;
+	var iva;
+
+
+	cantidadLamparas = txtIdCantidad.value;
+	cantidadLamparas = parseInt(cantidadLamparas);
+
+	marca = Marca.value;
+
+	precioSindescuento = cantidadLamparas * 35;
+
+	if(cantidadLamparas > 5 )
+	{
+		descuento = precioSindescuento / 2;
+		// En el descuento de puede hacer -- descuento = 50 -- y asi calcular todo al final del programa 
+		precioFinal = precioSindescuento - descuento;
+	}
+	else
+	{
+		switch(cantidadLamparas)
+		{
+			case 5 :
+				switch(marca)
+				{
+					case "ArgentinaLuz" :
+
+						descuento = precioSindescuento * 0.4;
+	// En el descuento se puede hacer -- DESCUENTO = 40; -- y asi realizar todo al final del programa					
+						precioFinal = precioSindescuento - descuento;
+						break;
+
+					default :
+						descuento = precioSindescuento * 0.3;
+						precioFinal = precioSindescuento - descuento;
+						break;	
+				}
+				break;
+
+			case 4 : 
+				switch(marca)
+				{
+					case "ArgentinaLuz" :
+					case "FelipeLamparas" :
+						descuento = precioSindescuento * 0.25;
+						precioFinal = precioSindescuento - descuento;
+						break;	
+
+					default :
+						descuento = precioSindescuento * 0.2;	
+						precioFinal = precioSindescuento - descuento;
+				}
+				break;
+				
+			case 3 :
+				switch(marca)
+				{
+					case "ArgentinaLuz" :
+						descuento = precioSindescuento * 0.15;
+						precioFinal = precioSindescuento - descuento;
+						break;
+
+					case "FelipeLamparas" :
+						descuento = precioSindescuento * 0.1;
+						precioFinal = precioSindescuento - descuento;
+						break;
+
+					default : 
+						descuento = (precioSindescuento * 5) / 100;
+						precioFinal = precioSindescuento - descuento;
+						break;
+				}
+				break;	
+
+			default : 
+				descuento = 0;
+				precioFinal = precioSindescuento - descuento;
+				break;	
+		}
+	}
+
+	txtIdprecioDescuento.value = precioFinal;
+
+	if(precioFinal > 120)
+	{
+		iva = precioFinal * 0.1;
+		precioBruto = precioFinal + iva;
+
+		alert("Su compra supero los $120 se incrementa un 10% de iva: " + precioBruto);
+	}
+
+
+
+	/*
+	---ESTE EJERCICIO LO HICE CON TAN SOLO IF---
+
     var cantidadLamparas;
     var precioSindescuento;
     var marca;
@@ -132,7 +233,7 @@ function CalcularPrecio ()
             importeConIva = precioConDescuento + aumentoIva;
             alert("El precio supero los 120 se agrega un iva del 10%: " + importeConIva);
         }
-
+*/
 }
 
  /*
